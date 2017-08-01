@@ -35,27 +35,25 @@ func main() {
 
 	//fmt.Println(results)
 	
-	for c, result := range results {
-		fmt.Printf("\n\n------ Position #%d ------\n", c + 1)
-		fmt.Printf("Article: %s\n", result.article)
-		fmt.Printf("Title: %s\n", result.title)
-		fmt.Printf("Vendor: %s\n", result.vendor)
-		fmt.Printf("In stock: %s\n", boolToString(result.inStock))
-		fmt.Printf("Price: %.2f rub.\n", result.price)
-		fmt.Printf("\n")
+	if (len(results) == 0) {
+		fmt.Printf("Nothing found\n\n\n\n")
+	} else {
+		for c, result := range results {
+			fmt.Printf("\n------ Position #%d ------\n", c + 1)
+			fmt.Printf("Article: %s\n", result.article)
+			fmt.Printf("Title: %s\n", result.title)
+			fmt.Printf("Vendor: %s\n", result.vendor)
+			fmt.Printf("In stock: %s\n", boolToString(result.inStock))
+			fmt.Printf("Price: %.2f rub.\n", result.price)
+			fmt.Printf("\n")
+			
+			if (len(results) == c + 1) {
+				fmt.Printf("\n\n\n")
+			}
+		}
 	}
 	
-	reader.ReadString('\n')
-
-	/*
-    fmt.Printf("hello, world\n")
-	time.Sleep(3000 * time.Millisecond)
-	reader := bufio.NewReader(os.Stdin)
-	request := gorequest.New()
-	_, body, _ := request.Get("http://example.com/").End()
-	fmt.Printf(body)
-	reader.ReadString('\n')
-	*/
+	main()
 }
 
 func get(article string) string {
